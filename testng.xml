@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="ParaBank Complete Banking Suite">
+
+    <listeners>
+        <listener class-name="com.parabank.utils.TestListener" />
+    </listeners>
+    
+    <test name="UI, API and Database Automation Tests">
+        <classes>
+          <!--   UI Page-Wise Test Classes -->
+            <class name="com.parabank.tests.Ui.LoginTest" />
+            <class name="com.parabank.tests.Ui.RegisterTest" />
+            <class name="com.parabank.tests.Ui.OverviewTest" />
+            <class name="com.parabank.tests.Ui.OpenAccountTest" />
+            <class name="com.parabank.tests.Ui.TransferTest" />
+            <class name="com.parabank.tests.Ui.BillPayTest" />
+            <class name="com.parabank.tests.Ui.RequestLoanTest" />
+            
+     <!--        End to End Integrated Workflow Test 
+            <class name="com.parabank.tests.Ui.EndToEndBankingTest" />
+            
+             Backend REST API Automation Test 
+            <class name="com.parabank.tests.API.ApiBankingTest" />
+            
+            Data Driven API Tests 
+        
+            <class name="com.parabank.tests.ApiBankingDataDrivenTest" />
+-->
+           
+        </classes>
+    </test>
+
+</suite>

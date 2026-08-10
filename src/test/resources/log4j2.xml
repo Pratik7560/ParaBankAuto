@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+
+    <Properties>
+        <Property name="LOG_PATTERN">%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n</Property>
+        <Property name="APP_LOG_ROOT">logs</Property>
+    </Properties>
+
+    <Appenders>
+        <!-- 1. Console Appender (For Jenkins and Eclipse Console) -->
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+        </Console>
+
+        <!-- 2. RollingFile Appender (Professional File Logging) -->
+        <RollingFile name="RollingFile"
+                     fileName="${APP_LOG_ROOT}/automation.log"
+                     filePattern="${APP_LOG_ROOT}/automation-%d{yyyy-MM-dd}-%i.log">
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+            <Policies>
+            <!--We can strore max to max 5mb file at time if its more than 5mb then automatically creat new file-->
+                <SizeBasedTriggeringPolicy size="5 MB"/>
+            </Policies>
+            <!--We can strore max to max 10 file at time-->
+            <DefaultRolloverStrategy max="10"/>
+        </RollingFile>
+    </Appenders>
+
+    <Loggers>
+        <Root level="info">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="RollingFile"/>
+        </Root>
+    </Loggers>
+
+</Configuration>
