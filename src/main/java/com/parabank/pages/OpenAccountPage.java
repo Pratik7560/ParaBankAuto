@@ -21,7 +21,7 @@ public class OpenAccountPage extends BasePage {
         click(openNewAccountLink);
     }
 
-    // EndToEndBankingTest मधील openAccount() ला मॅच होण्यासाठी
+    
     public void openAccount(String accountType) {
         navigateToOpenAccountPage();
         Log.info("Selecting Account Type: " + accountType);

@@ -19,7 +19,7 @@ public class TestListener implements ITestListener {
         String testName = result.getMethod().getMethodName();
         Object[] params = result.getParameters();
 
-        // Data-Driven Testing साठी पहिला पॅरामीटर (CustomerID) टेस्टच्या नावात जोडणे
+        // Append the first parameter (e.g., CustomerID) to test name for Data-Driven Testing
         if (params != null && params.length > 0 && params[0] != null) {
             testName += " [" + params[0].toString() + "]";
         }
@@ -41,15 +41,15 @@ public class TestListener implements ITestListener {
         test.get().log(Status.FAIL, result.getThrowable());
         Log.error("TEST FAILED: " + result.getMethod().getMethodName());
 
-        // Selenium UI Test साठी Screenshot काढून Extent Report मध्ये अटॅच करणे
+        // Capture screenshot for Selenium UI Tests and attach to Extent Report
         Object testClass = result.getInstance();
         WebDriver driver = null;
 
         try {
-            // BaseTest मधील public WebDriver driver शोधतो
+            // Retrieve public WebDriver instance from BaseTest
             driver = (WebDriver) result.getTestClass().getRealClass().getField("driver").get(testClass);
         } catch (Exception e) {
-            // API Tests मध्ये WebDriver नसतो, त्यामुळे इथे एरर येणे नॉर्मल आहे
+            // API tests do not use WebDriver, so exception handling is expected here
             Log.info("No active WebDriver found for screenshot capture (likely an API test).");
         }
 
