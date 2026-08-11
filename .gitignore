@@ -4,3 +4,4 @@ test-output/
 .classpath
 .project
 *.log
+reports/* linguist-vendored
